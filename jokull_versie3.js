@@ -29,11 +29,15 @@ function gcd(a,b) {
         return a;
     }
     return gcd(b,a%b);
-};
+}
 
 //random generator function
 function randomgen(value) {
     return (Math.floor(Math.random()*value));
+}
+
+function stringcheck(string) {
+    return string.replace(/ /g,"");
 }
 
 bot.on('message', message => {
@@ -114,11 +118,11 @@ if (nospace.indexOf("fuck") !== -1 || nospace.indexOf("FUCK")!== -1 || nospace.i
 
 
     //classic jokull greeting
-  }else if (msg === "hey jokull") {
+  }else if (msg === stringcheck("hey jokull")) {
         message.channel.send("If algebraists like it, they put a ring on it.");
 
     //tell fortune
-  }else if (msg === "what's my fortune") {
+  }else if (msg === stringcheck("what's my fortune")) {
         var quotes=["No hope.", "I suppose you may become wealthy one day.",
         "Bleak.","Why are you asking me this? I'm not a psychic type!"];
         var random=Math.floor(Math.random()*quotes.length);
@@ -132,11 +136,11 @@ if (nospace.indexOf("fuck") !== -1 || nospace.indexOf("FUCK")!== -1 || nospace.i
         message.channel.send(phrase[random2]);
 
     //tell me i'm pretty
-    }else if (msg=="tell me i'm pretty") {
+    }else if (msg === stringcheck("tell me i'm pretty")) {
         message.channel.send("no");
 
     //replies with a random emoji to indicate mood
-    }else if ( msg === "what's your mood" ) {
+    }else if ( msg === stringcheck("what's your mood") ) {
         var emojis=["<:wrongbinch:359876766858346509>","<:jokull2:370064811775492096>","<:jokull3:370064811821891584>","<:jokull1:370064811628953611>","<:AAAAAAA:359879736392024065>","<:mona:359878581700001794>","<:horror:371727607080943636>","<:angry:366017544345092096>","<:im_dying_squirtle:375447495167180800>","<:horror:371727607080943636>","<:angrydognoises:411003327137054721>","<:winky:405569333562179595>","<:medleythonk:403991823502016512>","<:mood:375726062795227136>","<:yellpo:413373717100625969>","<:donk:399430425216417794>"];
         var random=Math.floor(Math.random()*emojis.length);
         message.channel.send(emojis[random]);
@@ -145,7 +149,7 @@ if (nospace.indexOf("fuck") !== -1 || nospace.indexOf("FUCK")!== -1 || nospace.i
     if(message.content.indexOf(config.prefix) !== 0) {return;}
 
     //a juicy gossip
-    if (command==="gossip") {
+    if (command ==="gossip") {
         var colleague=colleagueArray[randomgen(colleagueArray.length)];
         var colleague2;
         var equal=true;
@@ -164,7 +168,7 @@ if (nospace.indexOf("fuck") !== -1 || nospace.indexOf("FUCK")!== -1 || nospace.i
         message.channel.send("Hmm, rumours, huh? I don't like indulging, but I suppose I could tell you just one:");
         message.channel.send(phrases[random2]);
 
-    if (command === "pickmeup") {
+    } else if (command === "pickmeup") {
         var quotes=["Your endeavours have paid off today. Now take the moment to chill out and relax.", "You're doing great. Keep it up! You'll get far.",
         "Life's tough, but you've made it this far. Don't lose sight now!","If something's troubling you, take a break. Refresh yourself."];
         var random=Math.floor(Math.random()*quotes.length);
@@ -205,9 +209,8 @@ if (nospace.indexOf("fuck") !== -1 || nospace.indexOf("FUCK")!== -1 || nospace.i
     }else if (command==="help") {
         message.channel.send("```Hello! I see that you have asked me for the commands I know at the moment. Here they are:\n•+pickmeup: User receives positive vibes.\n•+math: Send a random math meme.\n•+wiki firstname lastname: Gets the Sunnyverse Wiki entry for that character.\n•+help: Show list of commands.\n•What's your mood: A random emoji is sent. It is presumably my current mood.\n•What's my fortune: I will tell you your fortune.```");
     }
-
-    }
 }
+
 
 )
 ;
