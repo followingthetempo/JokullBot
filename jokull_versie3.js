@@ -1,6 +1,6 @@
 //importing the discord.js module
 const discord = require('discord.js');
-const config=require("./jokullconfig.json");
+const config=require("./configo.json");
 const prefix=config.prefix;
 const ownerID=config.ownerID
 
